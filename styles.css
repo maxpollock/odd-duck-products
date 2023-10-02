@@ -1,5 +1,93 @@
+/* Global styling */
+
 * {
   box-sizing: border-box;
   font-family: 'Titillium Web', sans-serif;
 }
 
+body {
+  display: grid;
+  width: 1600px;
+  height: 800px;
+  margin: 2rem auto;
+  grid-template-columns: 1fr 2fr 2fr 2fr;
+  grid-template-rows: 12% 36% 10% 30% 12%;
+}
+
+div, footer, article {
+  border: 2px solid rgb(112, 112, 112);
+}
+
+/* Title Styling */
+.title {
+  display: flex;
+  align-items: center;
+  grid-area: 1 / 1 / 2 / 5;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-left: 1rem;
+}
+
+#logo {
+  width: auto;
+  height: 90%;
+  border-radius: 20%;
+  margin: 0.5rem;
+}
+
+/* Results Section */
+.results {
+  grid-area: 2 / 1 / 5 / 2;
+}
+
+h2 {
+  margin-left: 1rem;
+  font-size: 1.8rem;
+}
+
+ul li {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+/* images styling */
+.img1 {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.img2 {
+  grid-area: 2 / 3 / 3 / 4;
+}
+
+.img3 {
+  grid-area: 2 / 4 / 3 / 5;
+}
+
+/* Article Styling */
+article {
+    grid-area: 4 / 2 / 5 / 5;
+}
+
+p {
+  font-size: 1.5rem;
+  margin: .5rem;
+}
+
+
+/* footer */
+footer {
+  grid-area: 5 / 1 / 6 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer h3 {
+  font-size: 2rem;
+}
+
+/* blank div */
+.blank-div {
+  grid-area: 3 / 2 / 4 / 5;
+}
