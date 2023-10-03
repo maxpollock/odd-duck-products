@@ -78,9 +78,7 @@ let maxClicks = 25;
 
 function execClick(event) {
   if (userClicks >= maxClicks) {
-    alert(
-      "You have answered enough times. Please click 'Populate Results' to view the outcome of the survey."
-    );
+    alert("You have answered 25/25 times. Please click 'View Results'.");
     return;
   } else {
     userClicks++;
