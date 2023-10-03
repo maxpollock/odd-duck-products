@@ -46,16 +46,6 @@ function renderProducts() {
   let product2Index = getRandomIndex();
   let product3Index = getRandomIndex();
 
-  // making sure they are not the same index
-  while (
-    product1Index === product2Index ||
-    product1Index === product3Index ||
-    product2Index === product3Index
-  ) {
-    product2Index = getRandomIndex();
-    product3Index = getRandomIndex();
-  }
-
   // checking if the product index has been used before
   while (
     allProducts[product1Index].name === image1.alt ||
@@ -78,6 +68,16 @@ function renderProducts() {
     allProducts[product3Index].name === image2.alt ||
     allProducts[product3Index].name === image3.alt
   ) {
+    product3Index = getRandomIndex();
+  }
+
+  // making sure they are not the same index
+  while (
+    product1Index === product2Index ||
+    product1Index === product3Index ||
+    product2Index === product3Index
+  ) {
+    product2Index = getRandomIndex();
     product3Index = getRandomIndex();
   }
 
