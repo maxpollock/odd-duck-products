@@ -56,6 +56,31 @@ function renderProducts() {
     product3Index = getRandomIndex();
   }
 
+  // checking if the product index has been used before
+  while (
+    allProducts[product1Index].name === image1.alt ||
+    allProducts[product1Index].name === image2.alt ||
+    allProducts[product1Index].name === image3.alt
+  ) {
+    product1Index = getRandomIndex();
+  }
+
+  while (
+    allProducts[product2Index].name === image1.alt ||
+    allProducts[product2Index].name === image2.alt ||
+    allProducts[product2Index].name === image3.alt
+  ) {
+    product2Index = getRandomIndex();
+  }
+
+  while (
+    allProducts[product3Index].name === image1.alt ||
+    allProducts[product3Index].name === image2.alt ||
+    allProducts[product3Index].name === image3.alt
+  ) {
+    product3Index = getRandomIndex();
+  }
+
   // changing the sources of the images so they update on each interaction
   image1.src = allProducts[product1Index].src;
   image2.src = allProducts[product2Index].src;
@@ -123,8 +148,6 @@ button.addEventListener("click", revealResults);
 
 // CHART DETAILS
 function createChart() {
-  const autocolors = window["chartjs-plugin-autocolors"];
-
   const ctx = document.getElementById("myChart");
   let productVotes = [];
   let productNames = [];
@@ -141,14 +164,15 @@ function createChart() {
     datasets: [
       {
         label: "Votes",
-        type: "line",
+        type: "bar",
         data: productVotes,
         borderWidth: 3,
-        backgroundColor: "blue",
+        backgroundColor: "red",
       },
+
       {
         label: "Views",
-        type: "bar",
+        type: "line",
         data: productViews,
         borderWidth: 3,
         backgroundColor: "green",
