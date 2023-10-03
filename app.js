@@ -77,12 +77,12 @@ let userClicks = 0;
 let maxClicks = 25;
 
 function execClick(event) {
-  userClicks++;
-
   if (userClicks === maxClicks) {
     alert(
       "You have answered enough times. Please click 'Populate Results' to view the outcome of the survey."
     );
+  } else {
+    userClicks++;
   }
 
   let clickedProduct = event.target.alt;
