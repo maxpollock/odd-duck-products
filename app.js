@@ -61,13 +61,30 @@ function renderProducts() {
   image2.src = allProducts[product2Index].src;
   image3.src = allProducts[product3Index].src;
 
+  // Adding the alt name to our items for the click counter to work
+  image1.alt = allProducts[product1Index].name;
+  image2.alt = allProducts[product2Index].name;
+  image3.alt = allProducts[product3Index].name;
+
   // adding views to the array
   allProducts[product1Index].views++;
   allProducts[product2Index].views++;
   allProducts[product3Index].views++;
 }
 
+// 25 clicks only
+let userClicks = 0;
+let maxClicks = 25;
+
 function execClick(event) {
+  userClicks++;
+
+  if (userClicks === maxClicks) {
+    alert(
+      "You have answered enough times. Please click 'Populate Results' to view the outcome of the survey."
+    );
+  }
+
   let clickedProduct = event.target.alt;
 
   if (event.target === imgContainer) {
@@ -79,8 +96,8 @@ function execClick(event) {
   for (let i = 0; i < allProducts.length; i++) {
     if (clickedProduct === allProducts[i].name) {
       allProducts[i].clicks++;
+      break;
     }
-    break;
   }
 }
 
@@ -88,7 +105,7 @@ function execClick(event) {
 imgContainer.addEventListener("click", execClick);
 renderProducts();
 
-// Auto update the total votes
+// Auto update the total votes for a button
 Product.prototype.updateVotes = function () {
   let id = document.getElementById(this.id);
   let voteNum = document.createElement("span");
