@@ -78,7 +78,10 @@ let maxClicks = 25;
 
 function execClick(event) {
   if (userClicks >= maxClicks) {
-    alert("You have answered 25/25 times. Please click 'View Results'.");
+    alert(
+      "You have answered 25/25 times. The chart will now be created. Please click 'View Results' for further detail."
+    );
+    createChart();
     return;
   } else {
     userClicks++;
@@ -117,3 +120,55 @@ function revealResults() {
 // Assigning the function to the button
 let button = document.getElementById("button");
 button.addEventListener("click", revealResults);
+
+// CHART DETAILS
+function createChart() {
+  const autocolors = window["chartjs-plugin-autocolors"];
+
+  const ctx = document.getElementById("myChart");
+  let productVotes = [];
+  let productNames = [];
+  let productViews = [];
+
+  for (let i = 0; i < allProducts.length; i++) {
+    productVotes.push(allProducts[i].clicks);
+    productNames.push(allProducts[i].name);
+    productViews.push(allProducts[i].views);
+  }
+
+  const data = {
+    labels: productNames,
+    datasets: [
+      {
+        label: "Votes",
+        type: "line",
+        data: productVotes,
+        borderWidth: 3,
+        backgroundColor: "blue",
+      },
+      {
+        label: "Views",
+        type: "bar",
+        data: productViews,
+        borderWidth: 3,
+        backgroundColor: "green",
+      },
+    ],
+  };
+
+  new Chart(ctx, {
+    data: data,
+    options: {
+      plugins: {
+        autocolors: {
+          mode: "label",
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+}
