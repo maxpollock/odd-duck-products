@@ -106,19 +106,16 @@ function execClick(event) {
 imgContainer.addEventListener("click", execClick);
 renderProducts();
 
-// Auto update the total votes for a button
-Product.prototype.updateVotes = function () {
-  let id = document.getElementById(this.id);
-  let voteNum = document.createElement("span");
-  voteNum.textContent = ` ${this.views} views | ${this.clicks} votes.`;
-  id.appendChild(voteNum);
-};
-
-function updateVotesButton() {
+// Updating Results page via button
+function revealResults() {
   for (i = 0; i < allProducts.length; i++) {
-    allProducts[i].updateVotes();
+    let id = document.getElementById("results-list");
+    let voteNum = document.createElement("li");
+    voteNum.textContent = `${allProducts[i].name}: ${allProducts[i].views} views | ${allProducts[i].clicks} votes.`;
+    id.appendChild(voteNum);
   }
 }
 
+// Assigning the function to the button
 let button = document.getElementById("button");
-button.addEventListener("click", updateVotesButton);
+button.addEventListener("click", revealResults);
