@@ -110,9 +110,8 @@ renderProducts();
 Product.prototype.updateVotes = function () {
   let id = document.getElementById(this.id);
   let voteNum = document.createElement("span");
-  voteNum.textContent = ` ${this.clicks} votes.`;
+  voteNum.textContent = ` ${this.views} views | ${this.clicks} votes.`;
   id.appendChild(voteNum);
-  console.log(this.clicks);
 };
 
 function updateVotesButton() {
