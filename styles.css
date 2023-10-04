@@ -57,6 +57,7 @@ h1 {
   border: 2px solid rgb(142, 142, 142);
   border-left: 3px solid black;
   border-bottom: none;
+  overflow: hidden;
 }
 
 ul {

@@ -1,32 +1,50 @@
-// Product Array and Creating Product functions
-const allProducts = [
-  new Product("Bag", "./images/bag.jpg", "bag"),
-  new Product("Banana", "./images/banana.jpg", "banana"),
-  new Product("Bathroom", "./images/bathroom.jpg", "bathroom"),
-  new Product("Boots", "./images/boots.jpg", "boots"),
-  new Product("Breakfast", "./images/breakfast.jpg", "breakfast"),
-  new Product("Bubblegum", "./images/bubblegum.jpg", "bubblegum"),
-  new Product("Chair", "./images/chair.jpg", "chair"),
-  new Product("Cthulhu", "./images/cthulhu.jpg", "cthulhu"),
-  new Product("Dog Duck", "./images/dog-duck.jpg", "dogDuck"),
-  new Product("Dragon Meat", "./images/dragon.jpg", "dragon"),
-  new Product("Pen", "./images/pen.jpg", "pen"),
-  new Product("Pet Sweep", "./images/pet-sweep.jpg", "petSweep"),
-  new Product("Scissors", "./images/scissors.jpg", "scissors"),
-  new Product("Shark", "./images/shark.jpg", "shark"),
-  new Product("Sweep", "./images/sweep.png", "babySweep"),
-  new Product("Tauntaun", "./images/tauntaun.jpg", "tauntaun"),
-  new Product("Unicorn", "./images/unicorn.jpg", "unicorn"),
-  new Product("Watering Can", "./images/water-can.jpg", "waterCan"),
-  new Product("Wine Glass", "./images/wine-glass.jpg", "wineGlass"),
-];
+const allProducts = [];
 
-function Product(name, src, id) {
+function Product(name, src, views, clicks) {
   this.name = name;
   this.src = src;
-  this.id = id;
-  this.views = 0;
-  this.clicks = 0;
+  this.views = views;
+  this.clicks = clicks;
+  allProducts.push(this);
+}
+
+// LOCAL STORAGE FUNCTIONS
+// if local storage doesnt exist then run product
+function checkLocal() {
+  const retrievedProduct = localStorage.getItem("Products");
+  const productLS = JSON.parse(retrievedProduct);
+
+  if (productLS === null) {
+    new Product("Bag", "./images/bag.jpg", 0, 0);
+    new Product("Banana", "./images/banana.jpg", 0, 0);
+    new Product("Bathroom", "./images/bathroom.jpg", 0, 0);
+    new Product("Boots", "./images/boots.jpg", 0, 0, "boots");
+    new Product("Breakfast", "./images/breakfast.jpg", 0, 0);
+    new Product("Bubblegum", "./images/bubblegum.jpg", 0, 0);
+    new Product("Chair", "./images/chair.jpg", 0, 0);
+    new Product("Cthulhu", "./images/cthulhu.jpg", 0, 0);
+    new Product("Dog Duck", "./images/dog-duck.jpg", 0, 0);
+    new Product("Dragon Meat", "./images/dragon.jpg", 0, 0);
+    new Product("Pen", "./images/pen.jpg", 0, 0);
+    new Product("Pet Sweep", "./images/pet-sweep.jpg", 0, 0);
+    new Product("Scissors", "./images/scissors.jpg", 0, 0);
+    new Product("Shark", "./images/shark.jpg", 0, 0);
+    new Product("Sweep", "./images/sweep.png", 0, 0);
+    new Product("Tauntaun", "./images/tauntaun.jpg", 0, 0);
+    new Product("Unicorn", "./images/unicorn.jpg", 0, 0);
+    new Product("Watering Can", "./images/water-can.jpg", 0, 0);
+    new Product("Wine Glass", "./images/wine-glass.jpg", 0, 0);
+  } else {
+    // if local storage exists, do NOT run the product.
+    for (let i = 0; i < productLS.length; i++) {
+      const newProduct = new Product(
+        productLS[i].name,
+        productLS[i].src,
+        productLS[i].views,
+        productLS[i].clicks
+      );
+    }
+  }
 }
 
 // Random Index Function
@@ -107,6 +125,7 @@ function execClick(event) {
       "You have answered 25/25 times. The chart will now be created. Please click 'View Results' for further detail."
     );
     createChart();
+    sendProduct();
     return;
   } else {
     userClicks++;
@@ -130,7 +149,6 @@ function execClick(event) {
 
 // click function for the container for imgs
 imgContainer.addEventListener("click", execClick);
-renderProducts();
 
 // Updating Results page via button
 function revealResults() {
@@ -142,7 +160,7 @@ function revealResults() {
   }
 }
 
-// Assigning the function to the button
+// // Assigning the function to the button
 let button = document.getElementById("button");
 button.addEventListener("click", revealResults);
 
@@ -196,3 +214,11 @@ function createChart() {
     },
   });
 }
+
+function sendProduct() {
+  const stringifyProductLS = JSON.stringify(allProducts);
+  localStorage.setItem("Products", stringifyProductLS);
+}
+
+checkLocal();
+renderProducts();
