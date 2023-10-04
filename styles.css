@@ -18,7 +18,7 @@ body {
 div,
 footer,
 article {
-  background-color: #f6f3ec;
+  background-color: #f2f2f2;
 }
 
 /* Title Styling */
@@ -28,14 +28,15 @@ article {
   grid-area: 1 / 1 / 2 / 5;
   color: rgb(243, 242, 242);
   border: 3px solid black;
-  border-bottom: none;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
-  background: rgb(10, 133, 8);
-  background: linear-gradient(
-    90deg,
-    rgba(10, 133, 8, 1) 62%,
-    rgba(0, 0, 0, 0.9248074229691877) 98%
+  background-image: linear-gradient(
+    to right top,
+    #051937,
+    #00476e,
+    #007b9f,
+    #00b2c4,
+    #12ebd8
   );
 }
 
@@ -84,9 +85,9 @@ button {
 }
 
 button:hover {
-  background-color: #386641;
+  background-color: #00476e;
   color: white;
-  border: 2px solid orange;
+  border: 2px solid white;
 }
 
 /* images styling */
@@ -109,8 +110,9 @@ button:hover {
   width: 380px;
   cursor: pointer;
   transition: 0.5s;
-  border: 2px solid black;
+  border: 3px solid black;
   border-radius: 10px;
+  margin-top: 0.3rem;
 }
 
 #img1:hover,
