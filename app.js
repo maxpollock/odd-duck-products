@@ -37,7 +37,7 @@ function checkLocal() {
   } else {
     // if local storage exists, do NOT run the product.
     for (let i = 0; i < productLS.length; i++) {
-      const newProduct = new Product(
+      new Product(
         productLS[i].name,
         productLS[i].src,
         productLS[i].views,
