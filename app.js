@@ -122,7 +122,7 @@ let maxClicks = 25;
 function execClick(event) {
   if (userClicks >= maxClicks) {
     alert(
-      "You have answered 25/25 times. The chart will now be created. Please click 'View Results' for further detail."
+      "You have answered 25/25 times. Data is being compiled. Please click for the Chart page to view."
     );
     sendProduct();
     return;
