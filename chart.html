@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Odd Ducks Product Campaign</title>
-    <!-- <link rel="stylesheet" href="reset.css"> -->
-    <link rel="stylesheet" href="styles.css" />
-    <script src="./app.js" defer></script>
+    <title>Odd Duck - Chart</title>
+    <script src="./chart.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="chart.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,33 +17,22 @@
   <body>
     <div class="title">
       <img src="./images/icon.png" alt="Logo" id="logo" />
-      <h1>Odd Ducks Product Campaign</h1>
+      <h1>Odd Ducks Product Campaign Results</h1>
     </div>
 
-    <div class="results">
-      <ul id="results-list"></ul>
-      <button id="button">View Results</button>
+    <div id="chart-div">
+      <button id="button">Click here to create the chart</button>
+      <div class="mychart-div">
+        <canvas id="myChart"></canvas>
+      </div>
     </div>
-
-    <div id="img-container">
-      <img src="" alt="" id="img1" />
-      <img src="" alt="" id="img2" />
-      <img src="" alt="" id="img3" />
-    </div>
-
-    <article>
-      <a href="./chart.html"
-        ><button id="chart-button">Click me for the Chart page</button></a
-      >
-    </article>
-
-    <div class="blank-div"></div>
 
     <footer>
       <h3>
         Thanks for taking part in our survey and contributing to the future of
         our company.
       </h3>
+      <a href="./index.html"><button id="footer-button">back to the home page</button></a>
     </footer>
   </body>
 </html>

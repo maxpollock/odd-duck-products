@@ -124,7 +124,6 @@ function execClick(event) {
     alert(
       "You have answered 25/25 times. The chart will now be created. Please click 'View Results' for further detail."
     );
-    createChart();
     sendProduct();
     return;
   } else {
@@ -163,57 +162,6 @@ function revealResults() {
 // // Assigning the function to the button
 let button = document.getElementById("button");
 button.addEventListener("click", revealResults);
-
-// CHART DETAILS
-function createChart() {
-  const ctx = document.getElementById("myChart");
-  let productVotes = [];
-  let productNames = [];
-  let productViews = [];
-
-  for (let i = 0; i < allProducts.length; i++) {
-    productVotes.push(allProducts[i].clicks);
-    productNames.push(allProducts[i].name);
-    productViews.push(allProducts[i].views);
-  }
-
-  const data = {
-    labels: productNames,
-    datasets: [
-      {
-        label: "Votes",
-        type: "bar",
-        data: productVotes,
-        borderWidth: 3,
-        backgroundColor: "red",
-      },
-
-      {
-        label: "Views",
-        type: "line",
-        data: productViews,
-        borderWidth: 3,
-        backgroundColor: "green",
-      },
-    ],
-  };
-
-  new Chart(ctx, {
-    data: data,
-    options: {
-      plugins: {
-        autocolors: {
-          mode: "label",
-        },
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
-}
 
 function sendProduct() {
   const stringifyProductLS = JSON.stringify(allProducts);
